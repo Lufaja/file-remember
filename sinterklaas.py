@@ -2,6 +2,7 @@ import random
 import json
 import datetime
 import os.path
+import os
 
 nameList = []
 copyList1 = []
@@ -11,6 +12,8 @@ print("type klaar als alle namen ingevoerd zijn")
 
 def result(lootjes):
     path = os.path.dirname(os.path.abspath(__file__))
+    if os.path.exists(path + "/data") == False:
+        os.mkdir(path + "/data")
     now = datetime.datetime.now().timestamp()
     with open(path + "\\data\\lootjes_"+str(now)+".json", "x") as file:
         file.writelines(lootjes)
